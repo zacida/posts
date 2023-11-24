@@ -63,7 +63,8 @@ jobs:
 
         # Remove the temporary file
         rm temp_html_file
-
+        cp style.css dist/style.css
+        
     - name: Commit and push changes
       run: |
         git config --local user.email ${{ secrets.MY_GITHUB_EMAIL }}
