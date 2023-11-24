@@ -42,6 +42,7 @@ jobs:
         html_strings=""
         for file in $(ls -1 posts/*.typ | sort -r); do
             filename=$(basename "$file" .typ)
+            pandoc -o "dist/$filename.html" "$file" -s --mathml
             date_part=$(echo "$filename" | cut -d'-' -f1)
             title_part=$(echo "$filename" | cut -d'-' -f2-)
             formatted_date=$(date -d "$date_part" "+%Y-%m-%d")
