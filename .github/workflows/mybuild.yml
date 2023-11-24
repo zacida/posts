@@ -47,12 +47,19 @@ jobs:
             formatted_date=$(date -d "$date_part" "+%Y-%m-%d")
 
             html_strings+="<li>
-                <a class=\"blog-name\" target=\"_blank\" href=\"dist/$filename.       html\">$title_part</a>
+                <a class=\"blog-name\" target=\"_blank\" href=\"dist/$filename.html\">$title_part</a>
                 <span class=\"blog-date\">$formatted_date</span>
             </li>"
         done
-        # Replace placeholder in index.html with sorted HTML strings
-        sed -i "s/TO_BE_REPLACED_BY_LI_ITEM/$html_strings/" index.html
+        # Create a temporary file to store the HTML strings
+        echo "$html_strings" > temp_html_file
+
+        # Replace placeholder in index.html with the content from the file
+        cp index_template.html index.html
+        sed -i -e '/TO_BE_REPLACED_BY_LI_ITEM/ {' -e 'r temp_html_file' -e 'd;}' index.html
+
+        # Remove the temporary file
+        rm temp_html_file
 
     - name: Commit and push changes
       run: |
