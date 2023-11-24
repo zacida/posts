@@ -52,7 +52,7 @@ jobs:
             </li>"
         done
         # Replace placeholder in index.html with sorted HTML strings
-        sed -i "s/\[TO_BE_REPLACED_BY_LI_ITEMS\]/$html_strings/" index.html
+        sed -i "s/TO_BE_REPLACED_BY_LI_ITEM/$html_strings/" index.html
 
     - name: Commit and push changes
       run: |
