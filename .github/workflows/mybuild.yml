@@ -67,7 +67,7 @@ jobs:
       run: |
         git config --local user.email ${{ secrets.MY_GITHUB_EMAIL }}
         git config --local user.name ${{ secrets.MY_GITHUB_USERNAME }}
-        git add -u dist/*
+        git add -A dist/*
         git add index.html
         git commit -m "Convert typ to HTML"
         git push
