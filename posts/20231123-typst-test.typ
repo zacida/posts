@@ -23,3 +23,10 @@ The first #count numbers of the sequence are:
   ..nums.map(n => $F_#n$),
   ..nums.map(n => str(fib(n))),
 ))
+
+
+This was already noted by pirates long ago. @dror2009
+
+Multiple sources say @elgiriyewithana-2023B @gordonWorldAbaloneFisheries2004.
+
+#bibliography("my.bib")
