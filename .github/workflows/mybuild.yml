@@ -40,6 +40,7 @@ jobs:
 
         # below is the answer from chatgpt
         html_strings=""
+        rm dist/*
         for file in $(ls -1 posts/*.typ | sort -r); do
             filename=$(basename "$file" .typ)
             pandoc -o "dist/$filename.html" "$file" -s --mathml
