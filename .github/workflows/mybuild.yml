@@ -28,15 +28,37 @@ jobs:
 
     - name: Convert typ to HTML
       run: |
-        for file in posts/*.typ; do
-          filename=$(basename "$file" .typ)
-          pandoc -o "dist/$filename.html" "$file" -s --mathml
+        # for file in posts/*.typ; do
+        #   filename=$(basename "$file" .typ)
+        #   pandoc -o "dist/$filename.html" "$file" -s --mathml
+        # done
+        # above is a piece of shell code that converts all *.typ files under posts folder to html files. All typ files are named like "20231123-test.typ", so before the hyphen is the date, after hyphen is the name(of course we should ignore the extension name). I would like you to collect all these information of those files under posts, and then:
+        # 1. ranked them by date, with latest date at the first.
+        # 2. for each file, you need to generate a HTML string like this "<a class="blog-name" target="_blank" href="dist\20231123-test.html">blog_title</a>
+        #             <span class="blog-date">2023-01-01</span>", as you can see, you need to use the information collected at last step to replace some of the fields in the string.
+        # 3. concatenate all these strings, then replace "[TO_BE_REPLACED_BY_LI_ITEMS]" in index.html with the concatenated string
+
+        # below is the answer from chatgpt
+        html_strings=""
+        for file in $(ls -1 posts/*.typ | sort -r); do
+            filename=$(basename "$file" .typ)
+            date_part=$(echo "$filename" | cut -d'-' -f1)
+            title_part=$(echo "$filename" | cut -d'-' -f2-)
+            formatted_date=$(date -d "$date_part" "+%Y-%m-%d")
+
+            html_strings+="<li>
+                <a class=\"blog-name\" target=\"_blank\" href=\"dist/$filename.       html\">$title_part</a>
+                <span class=\"blog-date\">$formatted_date</span>
+            </li>"
         done
+        # Replace placeholder in index.html with sorted HTML strings
+        sed -i "s/\[TO_BE_REPLACED_BY_LI_ITEMS\]/$html_strings/" index.html
 
     - name: Commit and push changes
       run: |
         git config --local user.email ${{ secrets.MY_GITHUB_EMAIL }}
         git config --local user.name ${{ secrets.MY_GITHUB_USERNAME }}
         git add dist/*
+        git add index.html
         git commit -m "Convert typ to HTML"
         git push
