@@ -29,9 +29,9 @@ jobs:
 
     - name: Convert typ to HTML
       run: |
-        ls -l 
+        ls -l -a
         pwd
-        ./workflow.sh
+        .github/workflows/workflow.sh
 
     - name: Commit and push changes
       run: |
