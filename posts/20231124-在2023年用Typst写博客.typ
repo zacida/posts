@@ -14,7 +14,7 @@ Typst官方将取代Tex做为主要目标，所以将Typst文件渲染为pdf之�
 ```shell
 pandoc -o "dist/$test.html" "test.typ" -s --mathml
 ```
-这之后就容易了，只是要想办法把渲染好的html链接到你的主页里（index.html）。我这里写了一个最简单的github pages，#link("https://github.com/zacida/zacida.github.io/releases/tag/demo_write_blog_in_typst")[
+这之后就容易了，只是要想办法把渲染好的html链接到你的主页里（index.html）。我这里写了一个最简单的github pages，#link("https://github.com/ziyuanding/ziyuanding.github.io/releases/tag/demo_write_blog_in_typst")[
   源码在这里
 ]。
 没有用框架，主要的内容都在`.github\workflows\mybuild.yml`里。

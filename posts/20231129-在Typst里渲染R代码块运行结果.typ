@@ -8,7 +8,7 @@ Typst是一个文档排版工具，包含一种标记语言，一个编译工具
 主要是期望在Typst中也能做到文学编程。而R语言又常常是文学编程中“编程"的那一部分。
 
 = 现阶段的问题
-通过使用knitr, 现在其实已经可以比较好地渲染文本类输出了。主要是图片信息显示格式错误。而这个错误又是因为knitr官方在当前时间点（2023年11月）并不支持typ文件的织入，只不过typ文件的代码块语法和md文件类似，而knitr在fallback情况下又是使用md语法去抓取代码块和织入结果，所以造成了”只有文本输出正常，图片输出有bug“的错觉——人家本就完全不支持。
+通过使用knitr, 现在其实已经可以比较好地渲染文本类输出了。主要是图片信息显示格式错误。而这个错误又是因为knitr官方在当前时间点（2023年11月）并不支持typ文件的织入，只不过typ文件的代码块语法和md文件类似，而knitr在fallback情况下又是使用md语法去抓取代码块和织入结果，所以造成了”只有文本输出正常，图片输出有bug“的错觉——人家本就完全不支持。\
 相关issue: \
 https://github.com/typst/typst/issues/1978 \
 https://github.com/yihui/knitr/issues/2283
@@ -36,4 +36,6 @@ knitr::knit_hooks$set(plot = function(x, options) {
 1. 写typ文件（我们就叫这个文件feed-me-to-knitr.typ吧），记得把上述代码加到开头
 2. R会话里运行命令 `knit("feed-me-to-knitr.typ", "feed-me-to-typst.typ")`
 3. 命令行运行`typst compile "feed-me-to-typst.typ" final.pdf`，得到最终的pdf文件
-上述提到的这些示例文件可以在这里下载到：https://github.com/yihui/knitr/files/13463399/typst-r.zip
+上述提到的这些示例文件可以在这里下载到：
+#link("https://github.com/yihui/knitr/files/13463399/typst-r.zip")
+
