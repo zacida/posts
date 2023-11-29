@@ -56,7 +56,7 @@
 </code></pre>
     <p>这之后就容易了，只是要想办法把渲染好的html链接到你的主页里（index.html）。我这里写了一个最简单的github
     pages，<a
-    href="https://github.com/zacida/zacida.github.io/releases/tag/demo_write_blog_in_typst">源码在这里</a>。
+    href="https://github.com/ziyuanding/ziyuanding.github.io/releases/tag/demo_write_blog_in_typst">源码在这里</a>。
     没有用框架，主要的内容都在<code>.github\workflows\mybuild.yml</code>里。</p>
     <p>如果你使用的是Hexo或Jekyll等流行的静态站点生成器，那可能就比较麻烦，我觉得你要么修改github
     action，想办法把typ转换得到的html塞到正常markdown渲染得到的html里；要么，就得去看一下这些站点生成器的插件系统，一般来说markdown到html这个流程也是通过markdown渲染插件实现的，我觉得应该也可以写一个typst渲染插件，然后这个插件里面调用pandoc之类的东西，这样会更有意思一点，推广起来很容易，大家接受度高。</p>
