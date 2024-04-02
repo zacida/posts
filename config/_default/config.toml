@@ -9,3 +9,6 @@ article.showDateUpdated = true
 toc = true
 
 googleAnalytics = "G-DZPNT0R1LX"
+
+showViews = true
+showLikes = true
