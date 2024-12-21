@@ -49,4 +49,4 @@ cmd /c "D: && cd / &&  rsync -avzL -e '~\scoop\apps\cwRsync\6.3.2\bin\ssh.exe -i
 WinSCP自定义命令的时候，勾选“本地命令 Local command”和“使用远程文件 Use remote files”
 
 最终效果：
-![](fig/2024-12-21-12-10-21.png)
+![最终效果](../2024-12-21-12-10-21.png)
